@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex align-items-center justify-content-center" style="margin-top:100px; margin-bottom: 50px;">
+    <div class="list-group list-group-light" style="width: 400px;">
+        {% for task in tasks %}
+        <a class="list-group-item d-flex justify-content-between align-items-center list-group-item-action" href="{% url 'update' task.id %}">
+            {{ task }}
+            <span class="badge rounded-pill text-bg-{% if task.completed %}success{% else %}danger{% endif %}">{% if task.completed %}Completed{% else %}Not Completed{%endif%}</span>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
